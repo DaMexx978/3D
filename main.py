@@ -8,6 +8,15 @@ cubik_rubik = Entity(model = "cube", color = color.yellow, position = (0, 0, 0),
 peremenaya_cubik = "right"
 sphere = Entity(model = "sphere", color = color.azure, position = (0, 1, 0))
 peremenaya_sphere = "up"
+
+netten = Entity(model = "cube", color = color.random_color(), position = (0,0,0))
+nettenwalkeruper = False
+nettenwalkerdowner = False
+
+
+
+
+
 def update():
     global peremenaya_cubik, peremenaya_sphere
     cubik_rubik.rotation_x += 50 *time.dt
@@ -22,9 +31,39 @@ def update():
         if cubik_rubik.x < -5:
             peremenaya_cubik = "right"
 
+    if peremenaya_sphere == "up":
+        sphere.y += 1 * time.dt
+        if sphere.y > 5:
+            peremenaya_sphere = "down"
+    elif peremenaya_sphere == "down":
+        sphere.y -= 1 * time.dt
+        if sphere.y < -5:
+            peremenaya_sphere = "up"
 
 def input(key):
+    global nettenwalkeruper, nettenwalkerdowner
     if key == "space":
         sphere.color = color.random_color()
+
+    if key == "w":
+        nettenwalkeruper = True
+    if key == "w up":
+        nettenwalkeruper = False
+    if nettenwalkeruper == True:
+        netten.y +=0.1
+
+    if key == "s":
+        nettenwalkerdowner = True
+    if key == "s up":
+        nettenwalkerdowner = False
+    if nettenwalkerdowner == True:
+        netten.y -= 0.1
+
+
+
+
+
+
+
 
 prilojenye.run()
