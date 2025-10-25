@@ -1,4 +1,5 @@
 from ursina import *
+from sours import GLEB_BOSHKA
 
 app = Ursina()
 window.title = "BALLS CONTROLLER"
@@ -12,12 +13,8 @@ table = Entity(
     collider = "box"
 )
 
-sphere_main_char = Entity(
-    model = "sphere",
-    scale = (2, 2, 2),
-    texture="TIKVA_STOL.png",
-    collider = "sphere",
-    position = (0, 3, 0)
+sphere_main_char = GLEB_BOSHKA(
+    (0, 3, 0),"TIKVA_STOL", 2, 3
 )
 
 
